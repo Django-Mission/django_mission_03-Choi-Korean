@@ -96,6 +96,7 @@ class Faq(models.Model):
     updated_by = models.ForeignKey(to=User, on_delete=models.CASCADE, related_name='faq_updated_by')
 
 class Inquiry(models.Model):
+    user = models.ForeignKey(User, on_delete=models.PROTECT)
     CATEGORY_CHOICES = [
     ('1', '일반'),  
     ('2', '계정'),  

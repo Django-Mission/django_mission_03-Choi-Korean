@@ -32,7 +32,7 @@ class FaqModelAdmin(admin.ModelAdmin):
 class InquiryqModelAdmin(admin.ModelAdmin):
     list_display = ( "category", "status", "title", "created_at", "created_by")
     list_filter = ('category', "status")
-    search_fields = ('created_by__id', 'email', 'phone')
+    search_fields = ['user__username', 'user__email', 'phone']
     search_help_text = 'username, phone, email'
     readonly_fields = ("created_at", )
     inlines = [CommentInline]
