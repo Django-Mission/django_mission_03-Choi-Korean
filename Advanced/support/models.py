@@ -102,7 +102,16 @@ class Inquiry(models.Model):
     ('3', '기타'), 
 
     ]
+
+    STATUS_CHOICES = [
+    ('1', '문의 등록'),  
+    ('2', '접수 완료'),  
+    ('3', '답변 완료'), 
+
+    ]
+
     category = models.CharField(verbose_name='카테고리', max_length=2, choices=CATEGORY_CHOICES)
+    status = models.CharField(verbose_name='상태', max_length=2, choices=STATUS_CHOICES, default="")
     title = models.CharField(verbose_name='질문 제목', max_length=80)
     email = models.EmailField(verbose_name='이메일', blank=True)    # Emailfield 자체에서 validators 사용중. 실제는 Charfield임
     phone = models.CharField(verbose_name='문자메시지', max_length=11, blank=True)
@@ -119,7 +128,6 @@ class Answer(models.Model): # 1대1 문의에 대한 답변
     content = models.TextField(verbose_name='답변내용')
     created_at = models.DateTimeField(verbose_name='생성 일시', auto_now_add=True)
     updated_at = models.DateTimeField(verbose_name='최종 수정 일시', auto_now=True)
-
     inquiry = models.ForeignKey(to='Inquiry', on_delete=models.CASCADE)
     created_by = models.ForeignKey(to=User, on_delete=models.CASCADE, related_name='answer_created_by')
     updated_by = models.ForeignKey(to=User, on_delete=models.CASCADE, related_name='answer_updated_by')
