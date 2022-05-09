@@ -1,0 +1,24 @@
+<!DOCTYPEhtml>
+<html>
+    <head></head>
+    <body>
+        <h1>FAQ</h1>
+        <tbody>
+            {% for faq in faqs %}
+            <p> 내용 : {{ faq.content }}</p>
+            <p> 분류 : {{ faq.inquiries }}</p>
+            <p> 작성일 : {{ faq.created_at }}</p>
+            <p> 작성자 : {{ faq.writer }}</p>
+            <p> 수정자 : {{ faq.writer }}</p>
+            <p> 수정일 : {{ faq.modified_on }}</p>
+            <hr>
+            {% endfor %}
+        </tbody>
+			  <!-- 몇번의 게임을 시도할건지 입력하세요. -->
+        <!-- <form action="./lottoresult" method="get">
+            <input type="text" name="games">
+            <input type="submit" value="로또 번호 추출하기">
+        </form> -->
+        <br/>
+    </body>
+</html>
